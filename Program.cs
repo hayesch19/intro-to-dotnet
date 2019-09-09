@@ -6,13 +6,17 @@ namespace intro_to_dotnet
   {
     static void Main(string[] args)
     {
+      Console.WriteLine("I Can Guess Your Number!.");
+      System.Threading.Thread.Sleep(2000);
+      Console.WriteLine("Think Of A Number Between 1-100 Then Hit 'Enter'");
+      // user input
+      while (Console.ReadKey().Key != ConsoleKey.Enter) { }
       var min = 1;
       var max = 100;
       var lower = min;
       var upper = max;
       var guess = 50;
       var guessing = true;
-      Console.WriteLine("Think Of A Number Between 1-100");
       while (guessing == true)
       {
         // Starting Guess
@@ -21,7 +25,18 @@ namespace intro_to_dotnet
         // Guessed Correct
         if (input == "yes")
         {
-          guessing = false;
+          Console.WriteLine($"Haha Your Number is {guess}");
+          System.Threading.Thread.Sleep(1000);
+          Console.WriteLine("Want To Play Again?");
+          var playAgain = Console.ReadLine();
+          if (playAgain == "yes")
+          {
+            guessing = true;
+          }
+          if (playAgain == "no")
+          {
+            guessing = false;
+          }
         }
         // If Higher
         else
@@ -41,7 +56,6 @@ namespace intro_to_dotnet
           }
         }
       }
-      Console.WriteLine($"Congrats Your Number is {guess}");
     }
   }
 }
